@@ -1,25 +1,31 @@
 PODS:
-  - RxBluetoothKit (1.2.3):
-    - RxCocoa (~> 2.0)
-    - RxSwift (~> 2.0)
-  - RxCocoa (2.6.0):
-    - RxSwift (~> 2.5)
-  - RxSwift (2.6.0)
+  - RxBluetoothKit (3.0.0):
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxSwift (3.0.0)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
 
 DEPENDENCIES:
-  - RxBluetoothKit
+  - RxBluetoothKit (from `https://github.com/Polidea/RxBluetoothKit.git`, branch `swift-3.0`)
   - RxSwift
   - SDWebImage (~> 3.7.3)
 
+EXTERNAL SOURCES:
+  RxBluetoothKit:
+    :branch: swift-3.0
+    :git: https://github.com/Polidea/RxBluetoothKit.git
+
+CHECKOUT OPTIONS:
+  RxBluetoothKit:
+    :commit: c0bbcf54613f557ad065204e029afdc5f135137f
+    :git: https://github.com/Polidea/RxBluetoothKit.git
+
 SPEC CHECKSUMS:
-  RxBluetoothKit: 5b08322682361e1e858db167a3697b80bf557245
-  RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
-  RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
+  RxBluetoothKit: aed03218cda1b0bbf29ece2483b22612774916df
+  RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: 8971a5ccc0bbb53dc533537c525469266c493df7
+PODFILE CHECKSUM: 538a15b1033f860cd259b9ef7f0dc23da2d5fa39
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

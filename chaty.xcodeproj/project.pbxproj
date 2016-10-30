@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CCE80354B87B717DE6CAC0C /* Pods_chaty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057A4F5FEC24211547463A9A /* Pods_chaty.framework */; };
+		6E4DD9A44D49C7B06581027D /* Pods_chaty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8DFB23CA554B6D8A8C6D9D /* Pods_chaty.framework */; };
 		CD14B9951CB7915500A2C26C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD14B8561CB7915400A2C26C /* Bolts.framework */; };
 		CD14B9961CB7915500A2C26C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD14B8571CB7915400A2C26C /* Parse.framework */; };
 		CD14B9971CB7915500A2C26C /* sr_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = CD14B8591CB7915400A2C26C /* sr_refresh.png */; };
@@ -304,9 +304,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		057A4F5FEC24211547463A9A /* Pods_chaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B5FB7299A088B40DF84E102 /* Pods-chaty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaty.release.xcconfig"; path = "Pods/Target Support Files/Pods-chaty/Pods-chaty.release.xcconfig"; sourceTree = "<group>"; };
-		BBF5BDDCD4D20CF9B9FCBEE6 /* Pods-chaty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chaty/Pods-chaty.debug.xcconfig"; sourceTree = "<group>"; };
+		0D8DFB23CA554B6D8A8C6D9D /* Pods_chaty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chaty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2904D8FCFECFC1A34391D9A1 /* Pods-chaty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chaty/Pods-chaty.debug.xcconfig"; sourceTree = "<group>"; };
+		6CEDE5769BAEBCA4D6571347 /* Pods-chaty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaty.release.xcconfig"; path = "Pods/Target Support Files/Pods-chaty/Pods-chaty.release.xcconfig"; sourceTree = "<group>"; };
 		C350BB3D74E09FCC1F11A2B3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD14B8431CB7915400A2C26C /* EMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMAlertView.h; sourceTree = "<group>"; };
 		CD14B8441CB7915400A2C26C /* EMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAlertView.m; sourceTree = "<group>"; };
@@ -830,13 +830,22 @@
 				CD5BECE41CB65F5B009B64B0 /* AVFoundation.framework in Frameworks */,
 				CD5BECE21CB65F55009B64B0 /* AudioToolbox.framework in Frameworks */,
 				CD5BECE01CB65F4E009B64B0 /* CoreMedia.framework in Frameworks */,
-				3CCE80354B87B717DE6CAC0C /* Pods_chaty.framework in Frameworks */,
+				6E4DD9A44D49C7B06581027D /* Pods_chaty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		243A0A7CB4342AAB34C1C043 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2904D8FCFECFC1A34391D9A1 /* Pods-chaty.debug.xcconfig */,
+				6CEDE5769BAEBCA4D6571347 /* Pods-chaty.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		521EC0C87FA390F10F9C6F69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,18 +860,9 @@
 				CD7E86CE1CB7A99A00B421FC /* libstdc++.6.0.9.tbd */,
 				CD14BA571CB791B300A2C26C /* libEaseUI.a */,
 				C350BB3D74E09FCC1F11A2B3 /* Pods.framework */,
-				057A4F5FEC24211547463A9A /* Pods_chaty.framework */,
+				0D8DFB23CA554B6D8A8C6D9D /* Pods_chaty.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C324BBBF764C3AF4210CE8C9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BBF5BDDCD4D20CF9B9FCBEE6 /* Pods-chaty.debug.xcconfig */,
-				3B5FB7299A088B40DF84E102 /* Pods-chaty.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		CD14B83E1CB7915400A2C26C /* 3rdparty */ = {
@@ -1873,7 +1873,7 @@
 				CD253A601CA91C6300F0473A /* chaty */,
 				CD253A5F1CA91C6300F0473A /* Products */,
 				521EC0C87FA390F10F9C6F69 /* Frameworks */,
-				C324BBBF764C3AF4210CE8C9 /* Pods */,
+				243A0A7CB4342AAB34C1C043 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1965,12 +1965,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD253A751CA91C6300F0473A /* Build configuration list for PBXNativeTarget "chaty" */;
 			buildPhases = (
-				FBA4459F778FFD5152CAC5CE /* [CP] Check Pods Manifest.lock */,
+				42DFB262661081814AB8D5EB /* [CP] Check Pods Manifest.lock */,
 				CD253A5A1CA91C6300F0473A /* Sources */,
 				CD253A5B1CA91C6300F0473A /* Frameworks */,
 				CD253A5C1CA91C6300F0473A /* Resources */,
-				D5225D353E5F5E5FF28F9B11 /* [CP] Embed Pods Frameworks */,
-				55AF33A07EDE4C1BDC64FD94 /* [CP] Copy Pods Resources */,
+				02D94BEE9B1A791EEAA024BE /* [CP] Embed Pods Frameworks */,
+				6565EA7FE583D04AA4636075 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1992,6 +1992,8 @@
 				TargetAttributes = {
 					CD253A5D1CA91C6300F0473A = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8EQ8DUTDZW;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -2162,22 +2164,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		55AF33A07EDE4C1BDC64FD94 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chaty/Pods-chaty-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5225D353E5F5E5FF28F9B11 /* [CP] Embed Pods Frameworks */ = {
+		02D94BEE9B1A791EEAA024BE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2192,7 +2179,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chaty/Pods-chaty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBA4459F778FFD5152CAC5CE /* [CP] Check Pods Manifest.lock */ = {
+		42DFB262661081814AB8D5EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2204,7 +2191,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6565EA7FE583D04AA4636075 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chaty/Pods-chaty-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2496,16 +2498,17 @@
 		};
 		CD253A761CA91C6300F0473A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBF5BDDCD4D20CF9B9FCBEE6 /* Pods-chaty.debug.xcconfig */;
+			baseConfigurationReference = 2904D8FCFECFC1A34391D9A1 /* Pods-chaty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 8EQ8DUTDZW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chaty/3rdparty/Parse",
 				);
-				GCC_PREFIX_HEADER = "/Users/xiaomo/Desktop/chaty/chaty/chaty-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/xiaomo/Documents/git/homelink/chaty/chaty-Prefix.pch";
 				INFOPLIST_FILE = chaty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2523,22 +2526,24 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "chaty/Class/chaty-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CD253A771CA91C6300F0473A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B5FB7299A088B40DF84E102 /* Pods-chaty.release.xcconfig */;
+			baseConfigurationReference = 6CEDE5769BAEBCA4D6571347 /* Pods-chaty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 8EQ8DUTDZW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chaty/3rdparty/Parse",
 				);
-				GCC_PREFIX_HEADER = "/Users/xiaomo/Desktop/chaty/chaty/chaty-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/xiaomo/Documents/git/homelink/chaty/chaty-Prefix.pch";
 				INFOPLIST_FILE = chaty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2555,6 +2560,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomo.chaty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "chaty/Class/chaty-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -267,8 +267,11 @@
                 if ([lastMessage.ext objectForKey:MESSAGE_ATTR_IS_BIG_EXPRESSION]) {
                     latestMessageTitle = @"[动画表情]";
                 }
+//                [CharacteristicsController ]
+                
 //                if ([latestMessageTitle isEqualToString:@"打开"]){
-                    [CharacteristicsController performComond:to commond:latestMessageTitle];
+//                    [CharacteristicsController performComond:to commond:latestMessageTitle];
+//                [CharacteristicsController ]
 //                }
             } break;
             case EMMessageBodyTypeVoice:{

@@ -11,35 +11,16 @@ import RxBluetoothKit
 import RxSwift
 
 class CharacteristicsController: UIViewController {
-
     
-    @IBOutlet weak var btnaa: UIButton!
-    
-    @IBOutlet weak var btndd: UIButton!
     var service: Service!
-    static var shareCharacteristicsList: [Characteristic] = []
+    
     private let disposeBag = DisposeBag()
-
+    
     @IBOutlet weak var characteristicsTableView: UITableView!
     
-    private var characteristicsList: [Characteristic] = []
-    private let characteristicCellId = "CharacteristicCell"
-    static let command:[String:[UInt32]] = ["打开1":[0xAA],"打开2":[0xBB],"打开3":[0xCC],"关闭":[0xDD]]
-    class func performComond(to:String,commond:String){
-        if  CharacteristicsController.shareCharacteristicsList.count < 1 {
-            return
-        }
-        let characteristic = CharacteristicsController.shareCharacteristicsList[0]
-        let arr = CharacteristicsController.command[commond]
-        
-        if arr != nil {
-            characteristic.writeValue(NSData(bytes: arr!, length: arr!.count), type: .WithResponse).subscribe{event in
-                
-            }
-        }
-      
-        
-    }
+    fileprivate var characteristicsList: [Characteristic] = []
+    fileprivate let characteristicCellId = "CharacteristicCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         characteristicsTableView.delegate = self
@@ -47,118 +28,97 @@ class CharacteristicsController: UIViewController {
         characteristicsTableView.estimatedRowHeight = 40.0
         characteristicsTableView.rowHeight = UITableViewAutomaticDimension
     }
-
-    override func viewWillAppear(animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getCharacteristicsForService(service)
+        getCharacteristics(for: service)
     }
-
-    private func getCharacteristicsForService(service: Service) {
+    
+    private func getCharacteristics(for service: Service) {
         service.discoverCharacteristics(nil)
-            .subscribeNext { characteristics in
+            .subscribe(onNext: { characteristics in
                 self.characteristicsList = characteristics
-               CharacteristicsController.shareCharacteristicsList = characteristics
                 self.characteristicsTableView.reloadData()
-            }.addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
     }
-
-    private func setNotificationsState(enabled enabled: Bool, characteristic: Characteristic) {
+    
+    fileprivate func setNotificationsState(enabled: Bool, characteristic: Characteristic) {
         characteristic.setNotifyValue(enabled)
-            .subscribeNext {
-                self.refreshCharacteristic($0)
-            }.addDisposableTo(disposeBag)
+            .subscribe(onNext: { [weak self] _ in
+                self?.characteristicsTableView.reloadData()
+            }).addDisposableTo(disposeBag)
     }
-
+    
     private func showWriteFieldForCharacteristic(characteristic: Characteristic) {
         let valueWriteController = UIAlertController(title: "Write value", message: "Specify value in HEX to write ",
-                                                     preferredStyle: .Alert)
-        valueWriteController.addTextFieldWithConfigurationHandler { textField in
-
+                                                     preferredStyle: .alert)
+        valueWriteController.addTextField { textField in
+            
         }
-        valueWriteController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        valueWriteController.addAction(UIAlertAction(title: "Write", style: .Default) { _ in
+        valueWriteController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        valueWriteController.addAction(UIAlertAction(title: "Write", style: .default) { _ in
             print("")
-            })
+        })
     }
-
-    private func triggerValueReadForCharacteristic(characteristic: Characteristic) {
+    
+    fileprivate func triggerValueRead(for characteristic: Characteristic) {
         characteristic.readValue()
-            .subscribeNext {
-                self.refreshCharacteristic($0)
-            }.addDisposableTo(disposeBag)
-    }
-
-    private func refreshCharacteristic(characteristic: Characteristic) {
-        characteristicsTableView.reloadData()
+            .subscribe(onNext: { [weak self] _ in
+                self?.characteristicsTableView.reloadData()
+            }).addDisposableTo(disposeBag)
     }
 }
 
 extension CharacteristicsController: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characteristicsList.count
     }
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(characteristicCellId, forIndexPath: indexPath)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: characteristicCellId, for: indexPath)
         let characteristic = characteristicsList[indexPath.row]
         if let cell = cell as? CharacteristicTableViewCell {
-            cell.updateWithCharacteristic(characteristic)
+            cell.update(with: characteristic)
         }
         return cell
     }
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let characteristic = characteristicsList[indexPath.row]
-        let actionSheet = UIAlertController(title: "Choose action", message: nil, preferredStyle: .ActionSheet)
-
-        if characteristic.properties.contains(.Notify) {
-            let turnNotificationOffAction = UIAlertAction(title: "Turn OFF notifications", style: .Default) { _ in
+        let actionSheet = UIAlertController(title: "Choose action", message: nil, preferredStyle: .actionSheet)
+        
+        if characteristic.properties.contains(.notify) {
+            let turnNotificationOffAction = UIAlertAction(title: "Turn OFF notifications", style: .default) { _ in
                 self.setNotificationsState(enabled: false, characteristic: characteristic)
             }
-            let turnNotificationOnAction = UIAlertAction(title: "Turn ON notifications", style: .Default) { _ in
+            let turnNotificationOnAction = UIAlertAction(title: "Turn ON notifications", style: .default) { _ in
                 self.setNotificationsState(enabled: true, characteristic: characteristic)
             }
             actionSheet.addAction(turnNotificationOffAction)
             actionSheet.addAction(turnNotificationOnAction)
         }
-        if characteristic.properties.contains(.Read) {
-            let readValueNotificationAction = UIAlertAction(title: "Trigger value read", style: .Default) { _ in
-                self.triggerValueReadForCharacteristic(characteristic)
+        if characteristic.properties.contains(.read) {
+            let readValueNotificationAction = UIAlertAction(title: "Trigger value read", style: .default) { _ in
+                self.triggerValueRead(for: characteristic)
             }
             actionSheet.addAction(readValueNotificationAction)
         }
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
     }
-
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
     }
-
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "CHARACTERISTICS"
-    }
-    
-    @IBAction func writeaa(sender: AnyObject) {
-         let characteristic = characteristicsList[0]
-        let arr: [UInt32] = [0xAA]
-        characteristic.writeValue(NSData(bytes: arr, length: arr.count), type: .WithResponse).subscribe{event in
-        
-        }
-    }
-    
-    @IBAction func writedd(sender: AnyObject) {
-        let characteristic = characteristicsList[0]
-        let arr: [UInt32] = [0xDD]
-        characteristic.writeValue(NSData(bytes: arr, length: arr.count), type: .WithResponse).subscribe{event in
-            
-        }
     }
 }
 
 extension CharacteristicTableViewCell {
-    func updateWithCharacteristic(characteristic: Characteristic) {
-        self.UUIDLabel.text = characteristic.UUID.UUIDString
+    func update(with characteristic: Characteristic) {
+        self.UUIDLabel.text = characteristic.uuid.uuidString
         self.isNotifyingLabel.text = characteristic.isNotifying ? "true" : "false"
         self.valueLabel.text = characteristic.value?.hexadecimalString ?? "Empty"
     }
